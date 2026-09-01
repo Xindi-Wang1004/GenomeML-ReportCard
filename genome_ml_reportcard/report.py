@@ -9,10 +9,15 @@ def write_markdown_report(report: dict, path: Path) -> None:
     lines = [
         f"# GenomeML Report Card v{report.get('version', '?')}",
         "",
+        f"- **contract_status:** `{report.get('contract_status', (report.get('contract') or {}).get('contract_status', 'n/a'))}`",
         f"- rows: {report.get('n_rows')}",
         f"- label-assignment groups: {report.get('n_groups')}",
         f"- label unit column: `{cols.get('label_assignment_unit')}`",
         f"- blocking unit column: `{cols.get('blocking_unit')}`",
+    ]
+    if report.get("deployment_claim"):
+        lines.append(f"- deployment claim (user-declared): {report['deployment_claim']}")
+    lines += [
         "",
         "## Label geometry",
         "",
@@ -24,6 +29,12 @@ def write_markdown_report(report: dict, path: Path) -> None:
         f"- random-CV shared-block fraction: {geom.get('random_cv_shared_block_fraction')}",
         "",
     ]
+    contract = report.get("contract") or {}
+    if contract.get("findings"):
+        lines += ["## Contract findings", ""]
+        for f in contract["findings"]:
+            lines.append(f"- **{f.get('severity')}** `{f.get('code')}`: {f.get('detail')}")
+        lines.append("")
     if report.get("overlap"):
         ov = report["overlap"]
         lines += [

@@ -16,6 +16,7 @@ from sklearn.model_selection import GroupKFold, KFold
 from sklearn.preprocessing import StandardScaler
 
 from genome_ml_reportcard import SCHEMA_COLUMNS, __version__
+from genome_ml_reportcard.contract import evaluate_contract, user_split_block_recurrence
 from genome_ml_reportcard.geometry import geometry_report, overlap_audit
 from genome_ml_reportcard.report import write_markdown_report
 
@@ -123,6 +124,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="Deployment / CV block column (Layer B). Alias: --deployment-block. Defaults to --group/--label-unit.",
     )
     ap.add_argument("--label", default="label", help="Phenotype column")
+    ap.add_argument(
+        "--split",
+        default=None,
+        help="Optional user-provided split column (train/test or fold ids) to audit declared-block recurrence",
+    )
+    ap.add_argument(
+        "--deployment-claim",
+        default=None,
+        help="Optional free-text deployment claim recorded in the report (not validated biologically)",
+    )
     ap.add_argument("--features", type=Path, default=None, help="Optional .npy feature matrix (rows=table)")
     ap.add_argument("--n-splits", type=int, default=5)
     ap.add_argument("--seed", type=int, default=SEED)
@@ -159,6 +170,8 @@ def main(argv=None):
         },
         "geometry": geometry_report(y, label_groups, blocks, n_splits=args.n_splits, seed=args.seed),
     }
+    if args.deployment_claim:
+        report["deployment_claim"] = str(args.deployment_claim)
 
     if args.table_b is not None:
         b = pd.read_csv(args.table_b, sep=None, engine="python")
@@ -178,12 +191,31 @@ def main(argv=None):
             raise SystemExit(f"features {len(X)} != table {len(df)}")
         report["probe"] = probe_gap(X, y, blocks, n_splits=args.n_splits, seed=args.seed)
 
+    split_rec = None
+    if args.split:
+        split_col = _pick_col(df, args.split, [args.split, "split", "fold", "partition"])
+        report["columns"]["user_split"] = split_col
+        split_rec = user_split_block_recurrence(df, split_col, blk_col)
+        report["user_split_audit"] = {
+            "split_column": split_col,
+            "declared_block_recurrence_fraction": split_rec,
+        }
+
+    report["contract"] = evaluate_contract(
+        geometry=report.get("geometry"),
+        probe=report.get("probe"),
+        overlap=report.get("overlap"),
+        user_split_block_recurrence=split_rec,
+    )
+    report["contract_status"] = report["contract"]["contract_status"]
+
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(report, indent=2))
     md_path = args.md_out or args.out.with_suffix(".md")
     write_markdown_report(report, md_path)
     print("wrote", args.out)
     print("wrote", md_path)
+    print("contract_status:", report["contract_status"])
     return 0
 
 

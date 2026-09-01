@@ -7,7 +7,7 @@ GenomeML Report Card **records and audits mechanical consistency** with a user-d
 
 | Package | `genome-ml-reportcard` |
 |---------|------------------------|
-| Version | 0.1.2 |
+| Version | 0.1.3 |
 | Install | `pip install genome-ml-reportcard` |
 | License | MIT |
 | Schema | [`schemas/reportcard_report.schema.json`](schemas/reportcard_report.schema.json) |

@@ -1,6 +1,6 @@
 {
   "tool": "genome-ml-reportcard",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "n_rows": 20,
   "n_groups": 4,
   "columns": {
@@ -65,5 +65,29 @@
     "warnings": [
       "FEW_GROUPS: n_blocks<10; interpret contrasts cautiously"
     ]
-  }
+  },
+  "contract": {
+    "contract_status": "warn",
+    "findings": [
+      {
+        "code": "FEW_GROUPS",
+        "severity": "warn",
+        "detail": "FEW_GROUPS: n_blocks<10; interpret contrasts cautiously"
+      },
+      {
+        "code": "HIGH_RANDOM_CV_SHARED_BLOCK_FRACTION",
+        "severity": "info",
+        "detail": "random_cv_shared_block_fraction=1.000; random estimand likely differs from block-held-out estimand"
+      },
+      {
+        "code": "LARGE_ABS_DELTA_B",
+        "severity": "info",
+        "detail": "|\u0394_B|=0.582 under locked probe (cohort-conditional)"
+      }
+    ],
+    "n_fail": 0,
+    "n_warn": 1,
+    "n_info": 2
+  },
+  "contract_status": "warn"
 }

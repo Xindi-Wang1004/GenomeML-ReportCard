@@ -1,5 +1,6 @@
-# GenomeML Report Card v0.1.1
+# GenomeML Report Card v0.1.3
 
+- **contract_status:** `warn`
 - rows: 20
 - label-assignment groups: 4
 - label unit column: `group`
@@ -13,6 +14,12 @@
 - median block size: 5.0
 - % singleton blocks: 0.0
 - random-CV shared-block fraction: 1.0
+
+## Contract findings
+
+- **warn** `FEW_GROUPS`: FEW_GROUPS: n_blocks<10; interpret contrasts cautiously
+- **info** `HIGH_RANDOM_CV_SHARED_BLOCK_FRACTION`: random_cv_shared_block_fraction=1.000; random estimand likely differs from block-held-out estimand
+- **info** `LARGE_ABS_DELTA_B`: |Δ_B|=0.582 under locked probe (cohort-conditional)
 
 ## Split-design contrast
 

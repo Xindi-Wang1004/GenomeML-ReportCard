@@ -1,6 +1,6 @@
 """genome-ml-reportcard: estimand-matched audit for group-assigned genome ML labels."""
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 SCHEMA_COLUMNS = (
     "sequence_id",  # accession / genome id
