@@ -1,0 +1,69 @@
+{
+  "tool": "genome-ml-reportcard",
+  "version": "0.1.1",
+  "n_rows": 20,
+  "n_groups": 4,
+  "columns": {
+    "accession": "sequence_id",
+    "label_assignment_unit": "group",
+    "blocking_unit": "group",
+    "label": "label"
+  },
+  "geometry": {
+    "n_rows": 20,
+    "n_label_groups": 4,
+    "label_unit_stats": {
+      "n_blocks": 4,
+      "median_block_size": 5.0,
+      "pct_singleton_blocks": 0.0,
+      "group_size_min": 5,
+      "group_size_max": 5,
+      "frac_singleton_groups": 0.0
+    },
+    "block_stats": {
+      "n_blocks": 4,
+      "median_block_size": 5.0,
+      "pct_singleton_blocks": 0.0,
+      "group_size_min": 5,
+      "group_size_max": 5,
+      "frac_singleton_groups": 0.0
+    },
+    "random_cv_shared_block_fraction": 1.0,
+    "metric_type": "ICC",
+    "within_block_homogeneity": 1.0,
+    "label_icc_or_purity": 1.0,
+    "within_label_unit_homogeneity": 1.0,
+    "label_unit_metric_type": "ICC"
+  },
+  "probe": {
+    "seed": 42,
+    "schema": [
+      "sequence_id",
+      "label",
+      "group"
+    ],
+    "primary_metric": "rho",
+    "random": {
+      "n": 20,
+      "scheme": "shuffle_KFold_k5",
+      "rho": 0.9694584179118516,
+      "auc": NaN
+    },
+    "blocked": {
+      "n": 20,
+      "scheme": "GroupKFold_k4",
+      "rho": 0.38778336716474066,
+      "auc": NaN
+    },
+    "delta": 0.5816750507471109,
+    "delta_rho": 0.5816750507471109,
+    "n": 20,
+    "n_groups": 4,
+    "group_size_min": 5,
+    "group_size_max": 5,
+    "frac_singleton_groups": 0.0,
+    "warnings": [
+      "FEW_GROUPS: n_blocks<10; interpret contrasts cautiously"
+    ]
+  }
+}

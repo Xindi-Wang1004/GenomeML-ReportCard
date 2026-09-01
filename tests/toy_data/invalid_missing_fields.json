@@ -1,0 +1,20 @@
+{
+  "tool": "genome-ml-reportcard",
+  "version": "0.1.1",
+  "n_rows": 20,
+  "n_groups": 4,
+  "columns": {
+    "accession": "sequence_id",
+    "label": "label"
+  },
+  "geometry": {
+    "random_cv_shared_block_fraction": 1.0
+  },
+  "probe": {
+    "primary_metric": "rho",
+    "random": {},
+    "blocked": {},
+    "delta": null
+  },
+  "_note": "Intentionally invalid: missing columns.label_assignment_unit / blocking_unit; geometry.within_block_homogeneity; probe.warnings"
+}
