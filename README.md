@@ -92,7 +92,7 @@ Shows that \(\Delta_B\) depends on label geometry and can be near zero or **nega
 
 Wang et al., *GenomeML Report Card: an executable framework for auditing biological generalization claims in genome machine learning* (manuscript in preparation).
 
-Software archive (concept DOI): [10.5281/zenodo.22226465](https://doi.org/10.5281/zenodo.22226465).  
+Software archive (concept DOI): [10.5281/zenodo.22275801](https://doi.org/10.5281/zenodo.22275801).  
 Paper analysis companion (frozen registries / panels): https://github.com/Xindi-Wang1004/Spillover
 
 ## License

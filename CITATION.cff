@@ -8,5 +8,5 @@ license: MIT
 repository-code: "https://github.com/Xindi-Wang1004/GenomeML-ReportCard"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.22226465
+    value: 10.5281/zenodo.22275801
     description: Zenodo software archive (concept DOI)

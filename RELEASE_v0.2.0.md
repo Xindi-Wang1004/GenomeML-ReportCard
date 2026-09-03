@@ -44,7 +44,7 @@ genome-ml-reportcard --help
 ## Archive
 
 - GitHub: https://github.com/Xindi-Wang1004/GenomeML-ReportCard
-- Zenodo concept DOI: https://doi.org/10.5281/zenodo.22226465
+- Zenodo concept DOI: https://doi.org/10.5281/zenodo.22275801
 - Paper analysis companion: https://github.com/Xindi-Wang1004/Spillover
 
 ## CI
