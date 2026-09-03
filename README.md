@@ -7,7 +7,6 @@ GenomeML Report Card **records and audits mechanical consistency** with a user-d
 
 | Package | `genome-ml-reportcard` |
 |---------|------------------------|
-| Version | 0.1.3 |
 | Install | `pip install genome-ml-reportcard` |
 | License | MIT |
 | Schema | [`schemas/reportcard_report.schema.json`](schemas/reportcard_report.schema.json) |
@@ -24,7 +23,7 @@ From this repository:
 git clone https://github.com/Xindi-Wang1004/GenomeML-ReportCard.git
 cd GenomeML-ReportCard
 pip install -e ".[dev]"
-python tests/test_smoke.py
+pytest -q
 ```
 
 ## Quickstart
@@ -75,10 +74,11 @@ Report Card consumes **user-provided** fold / group columns. Typical upstream co
 
 The tool audits consistency with the declaration; it does not replace those constructors.
 
-## Examples
+## Examples and tutorials
 
-Toy valid / invalid reports: [`tests/toy_data/`](tests/toy_data/).  
-Published-panel audit vignette (Babayan viral group): see paper companion archive / `examples/` when synced from the manuscript bundle.
+- Toy valid / invalid reports: [`tests/toy_data/`](tests/toy_data/)
+- Example contracts: [`examples/contracts/`](examples/contracts/)
+- Tutorials: [`tutorials/`](tutorials/) (validate block-excluded split; detect recurrence; render report)
 
 ## Simulation
 
@@ -90,10 +90,10 @@ Shows that \(\Delta_B\) depends on label geometry and can be near zero or **nega
 
 ## Citation
 
-Wang et al., *GenomeML Report Card: an executable framework for auditing biological generalization claims in genome machine learning* (Genome Biology Resource submission).
+Wang et al., *GenomeML Report Card: an executable framework for auditing biological generalization claims in genome machine learning* (manuscript in preparation).
 
-Software archive (v0.1.1): [10.5281/zenodo.22226465](https://doi.org/10.5281/zenodo.22226465).  
-Paper analysis bundle (multi-task panels): historically under `Spillover/transfer_GB/`; this repository is the **canonical software** home.
+Software archive (concept DOI): [10.5281/zenodo.22226465](https://doi.org/10.5281/zenodo.22226465).  
+Paper analysis companion (frozen registries / panels): https://github.com/Xindi-Wang1004/Spillover
 
 ## License
 

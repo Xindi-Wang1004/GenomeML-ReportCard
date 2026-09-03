@@ -1,0 +1,10 @@
+claim_id: unseen_species_host_prediction
+label_assignment_unit: host_category
+deployment_block:
+  column: species
+  rule: strict_train_test_disjoint
+evaluation_unit: accession
+split_artifact: folds.json
+metric: AUROC
+audit_policy:
+  fail_on_block_recurrence: true

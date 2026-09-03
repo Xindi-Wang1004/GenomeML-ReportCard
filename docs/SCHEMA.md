@@ -1,4 +1,4 @@
-# GenomeML Report Card — report schema (v0.1.3+)
+# GenomeML Report Card — report schema
 
 ## Required input columns (`SCHEMA_COLUMNS`)
 
@@ -8,7 +8,19 @@
 | `label` | Target label |
 | `group` (`--group` / `--label-unit`) | Label-assignment unit |
 
-Optional: `block` (`--block` / `--deployment-block`; defaults to label unit), `--split` (user folds), `--deployment-claim`, `taxonomy`, `fasta_path`.
+Optional: `block` (`--block` / `--deployment-block`; defaults to label unit), `--split` (user folds), `--deployment-claim`, `assertion_provenance`, `taxonomy`, `fasta_path`.
+
+## Assertion provenance (`assertion_provenance`)
+
+Optional object recording **who declared** each contract field. Mechanical conformance is assessed relative to the recorded contract; this object separates author-declared fields from curator-mapped, user-supplied, or remediation-only fields.
+
+| Field | Allowed values |
+|---|---|
+| `claim` | `author_declared` / `upstream_release` / `curator_mapped` / `user_supplied` / `remediation_only` / `not_available` |
+| `deployment_block` | same |
+| `unit_to_block_mapping` | same |
+| `split_membership` | same, plus `direct_release` / `deterministic_generator` when recording membership provenance |
+| `curation_status` | `source_preserving` / `adapter_only` / `remediation_only` / `user_supplied` |
 
 ## Contract status (`contract_status`)
 

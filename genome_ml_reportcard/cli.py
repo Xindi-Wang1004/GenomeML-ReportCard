@@ -16,6 +16,7 @@ from sklearn.model_selection import GroupKFold, KFold
 from sklearn.preprocessing import StandardScaler
 
 from genome_ml_reportcard import SCHEMA_COLUMNS, __version__
+from genome_ml_reportcard.assertion_provenance import load_assertion_provenance
 from genome_ml_reportcard.contract import evaluate_contract, user_split_block_recurrence
 from genome_ml_reportcard.geometry import geometry_report, overlap_audit
 from genome_ml_reportcard.report import write_markdown_report
@@ -134,6 +135,17 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help="Optional free-text deployment claim recorded in the report (not validated biologically)",
     )
+    ap.add_argument(
+        "--assertion-provenance",
+        type=Path,
+        default=None,
+        help=(
+            "Optional JSON/YAML file with assertion_provenance "
+            "(claim / deployment_block / unit_to_block_mapping / "
+            "split_membership / curation_status). Who declared each "
+            "contract field; not a biological validation."
+        ),
+    )
     ap.add_argument("--features", type=Path, default=None, help="Optional .npy feature matrix (rows=table)")
     ap.add_argument("--n-splits", type=int, default=5)
     ap.add_argument("--seed", type=int, default=SEED)
@@ -172,6 +184,8 @@ def main(argv=None):
     }
     if args.deployment_claim:
         report["deployment_claim"] = str(args.deployment_claim)
+    if args.assertion_provenance is not None:
+        report["assertion_provenance"] = load_assertion_provenance(args.assertion_provenance)
 
     if args.table_b is not None:
         b = pd.read_csv(args.table_b, sep=None, engine="python")

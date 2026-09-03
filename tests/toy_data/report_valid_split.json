@@ -1,13 +1,14 @@
 {
   "tool": "genome-ml-reportcard",
-  "version": "0.2.0",
+  "version": "0.1.3",
   "n_rows": 20,
   "n_groups": 4,
   "columns": {
     "accession": "sequence_id",
     "label_assignment_unit": "group",
-    "blocking_unit": "group",
-    "label": "label"
+    "blocking_unit": "block",
+    "label": "label",
+    "user_split": "split"
   },
   "geometry": {
     "n_rows": 20,
@@ -35,6 +36,7 @@
     "within_label_unit_homogeneity": 1.0,
     "label_unit_metric_type": "ICC"
   },
+  "deployment_claim": "held-out composition block",
   "probe": {
     "seed": 42,
     "schema": [
@@ -52,11 +54,11 @@
     "blocked": {
       "n": 20,
       "scheme": "GroupKFold_k4",
-      "rho": 0.38778336716474066,
+      "rho": 0.0,
       "auc": NaN
     },
-    "delta": 0.5816750507471109,
-    "delta_rho": 0.5816750507471109,
+    "delta": 0.9694584179118516,
+    "delta_rho": 0.9694584179118516,
     "n": 20,
     "n_groups": 4,
     "group_size_min": 5,
@@ -65,6 +67,10 @@
     "warnings": [
       "FEW_GROUPS: n_blocks<10; interpret contrasts cautiously"
     ]
+  },
+  "user_split_audit": {
+    "split_column": "split",
+    "declared_block_recurrence_fraction": 0.0
   },
   "contract": {
     "contract_status": "warn",
@@ -82,7 +88,7 @@
       {
         "code": "LARGE_ABS_DELTA_B",
         "severity": "info",
-        "detail": "|\u0394_B|=0.582 under locked probe (cohort-conditional)"
+        "detail": "|\u0394_B|=0.969 under locked probe (cohort-conditional)"
       }
     ],
     "n_fail": 0,

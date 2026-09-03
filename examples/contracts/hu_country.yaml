@@ -1,0 +1,10 @@
+claim_id: hu_ceftazidime_country_block
+label_assignment_unit: isolate
+deployment_block:
+  column: country
+  rule: strict_train_test_disjoint
+evaluation_unit: genome_id
+metric: AUROC
+audit_policy:
+  fail_on_block_recurrence: true
+notes: empirical_null_contrast_distinct_from_c2_phylo_fold_audit

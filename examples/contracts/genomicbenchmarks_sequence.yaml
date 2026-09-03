@@ -1,0 +1,10 @@
+claim_id: human_nontata_promoters_sequence_holdout
+label_assignment_unit: sequence
+deployment_block:
+  column: sequence_id
+  rule: train_test_id_disjoint
+evaluation_unit: sequence_id
+metric: accuracy_or_auroc
+audit_policy:
+  fail_on_block_recurrence: true
+  biological_block_validation: not_required

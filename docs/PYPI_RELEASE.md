@@ -3,7 +3,7 @@
 ## Local verify
 
 ```bash
-cd transfer_GB/audit_toolkit
+cd paper analysis companion/audit_toolkit
 pip install -e ".[dev]"
 python tests/test_smoke.py
 pip install build

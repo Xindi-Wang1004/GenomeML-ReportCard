@@ -17,6 +17,18 @@ def write_markdown_report(report: dict, path: Path) -> None:
     ]
     if report.get("deployment_claim"):
         lines.append(f"- deployment claim (user-declared): {report['deployment_claim']}")
+    ap = report.get("assertion_provenance") or {}
+    if ap:
+        lines.append("- assertion provenance:")
+        for key in (
+            "claim",
+            "deployment_block",
+            "unit_to_block_mapping",
+            "split_membership",
+            "curation_status",
+        ):
+            if key in ap:
+                lines.append(f"  - {key}: `{ap[key]}`")
     lines += [
         "",
         "## Label geometry",

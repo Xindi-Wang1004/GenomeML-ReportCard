@@ -1,4 +1,4 @@
-# GenomeML Report Card v0.2.0
+# GenomeML Report Card v0.1.3
 
 - **contract_status:** `warn`
 - rows: 20
@@ -19,15 +19,15 @@
 
 - **warn** `FEW_GROUPS`: FEW_GROUPS: n_blocks<10; interpret contrasts cautiously
 - **info** `HIGH_RANDOM_CV_SHARED_BLOCK_FRACTION`: random_cv_shared_block_fraction=1.000; random estimand likely differs from block-held-out estimand
-- **info** `LARGE_ABS_DELTA_B`: |Δ_B|=0.582 under locked probe (cohort-conditional)
+- **info** `LARGE_ABS_DELTA_B`: |Δ_B|=0.969 under locked probe (cohort-conditional)
 
 ## Split-design contrast
 
 - primary metric: rho
 - random: 0.9694584179118516
-- blocked: 0.38778336716474066
-- Δ: 0.5816750507471109
-- Δρ (always reported): 0.5816750507471109
+- blocked: 0.0
+- Δ: 0.9694584179118516
+- Δρ (always reported): 0.9694584179118516
 - n_blocks: 4
 - frac singleton blocks: 0.0
 

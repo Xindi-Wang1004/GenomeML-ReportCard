@@ -1,0 +1,10 @@
+claim_id: ogt_species_held_out
+label_assignment_unit: species
+deployment_block:
+  column: species
+  rule: strict_train_test_disjoint
+evaluation_unit: accession
+metric: species_aggregated_spearman
+audit_policy:
+  fail_on_block_recurrence: true
+notes: positive_control_geometry
